@@ -1,0 +1,1054 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOFTSPACE — A little space for your mind</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  --sage: #91a890;
+  --sage-dark: #647e68;
+  --sage-light: #e5ebe1;
+  --beige: #eee8dc;
+  --cream: #faf7f0;
+  --lavender: #b7a4d4;
+  --text: #343b34;
+  --muted: #899187;
+  --white: #fffdfa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--beige);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  padding: 35px 18px;
+}
+
+button, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  max-width: 1100px;
+  min-height: 750px;
+  margin: auto;
+  background: var(--cream);
+  border-radius: 18px;
+  box-shadow: 0 12px 35px #514c3d20;
+  overflow: hidden;
+}
+
+/* HEADER */
+
+header {
+  height: 85px;
+  padding: 0 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eae5db;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--sage-dark);
+  cursor: pointer;
+}
+
+.logo span {
+  color: var(--lavender);
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+nav button {
+  border: none;
+  background: none;
+  color: #747970;
+  font-size: 13px;
+  padding: 9px 0;
+}
+
+nav button:hover,
+nav button.active {
+  color: var(--sage-dark);
+  border-bottom: 2px solid var(--sage);
+}
+
+/* MAIN */
+
+main {
+  padding: 35px 55px;
+}
+
+.page {
+  display: none;
+  animation: appear .35s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 39px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+p {
+  color: #777f74;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  color: var(--sage-dark);
+  letter-spacing: 2px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 255px;
+  background: var(--sage-light);
+  border-radius: 17px;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 38px;
+  max-width: 350px;
+  margin: 12px 0;
+}
+
+.hero p {
+  max-width: 350px;
+}
+
+.hero-art {
+  font-size: 100px;
+  opacity: .75;
+  padding: 10px 25px;
+}
+
+/* BUTTONS */
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  padding: 12px 23px;
+  background: var(--sage);
+  color: white;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: var(--sage-dark);
+  transform: translateY(-2px);
+}
+
+.btn.purple {
+  background: var(--lavender);
+}
+
+.btn.purple:hover {
+  background: #9983bc;
+}
+
+.btn.light {
+  background: white;
+  color: var(--sage-dark);
+  border: 1px solid #dce3d8;
+}
+
+/* GRID */
+
+.section-title {
+  margin: 35px 0 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background: var(--sage-light);
+  border-radius: 15px;
+  padding: 23px;
+  border: 1px solid #dce4d9;
+  min-height: 165px;
+}
+
+.card:nth-child(2) {
+  background: #eee9f4;
+  border-color: #e2d9ec;
+}
+
+.card:nth-child(3) {
+  background: #f0eadf;
+  border-color: #e8dfd1;
+}
+
+.card-icon {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 12px;
+  min-height: 35px;
+}
+
+.card button {
+  margin-top: 8px;
+}
+
+/* SIDE LAYOUT */
+
+.content-layout {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 25px;
+}
+
+.sidebar {
+  border-left: 1px solid #e6e0d7;
+  padding-left: 23px;
+}
+
+.sidebar h3 {
+  font-size: 13px;
+}
+
+.sidebar p {
+  font-size: 12px;
+}
+
+.small-box {
+  background: #e8eee4;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+/* INPUTS */
+
+textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  background: white;
+  border: 1px solid #dce3d8;
+  border-radius: 13px;
+  padding: 17px;
+  outline: none;
+  color: var(--text);
+}
+
+textarea:focus {
+  border-color: var(--sage);
+}
+
+.input-area {
+  background: var(--sage-light);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.note {
+  background: white;
+  border: 1px solid #e4e5dc;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-wrap: anywhere;
+}
+
+.note button {
+  margin-top: 12px;
+  border: none;
+  background: none;
+  color: #a57d91;
+}
+
+/* MOOD */
+
+.moods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.mood {
+  background: white;
+  border: 1px solid #e5e3dc;
+  border-radius: 13px;
+  padding: 20px 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.mood span {
+  display: block;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.mood.selected {
+  background: var(--sage-light);
+  border: 2px solid var(--sage);
+}
+
+/* BREATHING */
+
+.breath-area {
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--sage-light);
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+}
+
+.breath-circle {
+  width: 130px;
+  height: 130px;
+  background: #9caf9a;
+  border-radius: 50%;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  transition: transform 4s ease-in-out;
+}
+
+.breath-circle.grow {
+  transform: scale(1.45);
+}
+
+.breath-circle.shrink {
+  transform: scale(1);
+}
+
+/* QUIET CORNER */
+
+.sound-card {
+  background: #e8eee4;
+  border-radius: 15px;
+  padding: 22px;
+  margin-bottom: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sound-card button {
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  border: none;
+  background: var(--sage);
+  color: white;
+  font-size: 17px;
+}
+
+/* LITTLE THINGS */
+
+.activity-box {
+  background: #eee9f4;
+  padding: 35px;
+  border-radius: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.activity-box .activity {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  line-height: 1.5;
+  margin: 25px auto;
+  max-width: 500px;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid #e9e4db;
+  margin: 0 55px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media(max-width: 750px) {
+  body {
+    padding: 10px;
+  }
+
+  header {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    gap: 13px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav button {
+    font-size: 11px;
+  }
+
+  main {
+    padding: 22px;
+  }
+
+  .hero {
+    padding: 22px;
+  }
+
+  .hero h1 {
+    font-size: 29px;
+  }
+
+  .hero-art {
+    font-size: 55px;
+    padding: 0;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .content-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-left: none;
+    border-top: 1px solid #e6e0d7;
+    padding: 20px 0 0;
+  }
+
+  .notes {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    margin: 0 22px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .breath-circle.grow {
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <div class="logo" onclick="showPage('home')">
+    ♧ SOFTSPACE<span>.</span>
+  </div>
+
+  <nav>
+    <button class="active" onclick="showPage('home',this)">Home</button>
+    <button onclick="showPage('brain',this)">Brain Space</button>
+    <button onclick="showPage('quiet',this)">Quiet Corner</button>
+    <button onclick="showPage('mood',this)">Mood Space</button>
+    <button onclick="showPage('reset',this)">Reset</button>
+    <button onclick="showPage('little',this)">Little Things</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="content-layout">
+
+<div>
+
+<div class="hero">
+  <div>
+    <div class="eyebrow">WELCOME TO YOUR SPACE</div>
+    <h1>A little space for your mind.</h1>
+    <p>No pressure. No expectations. Just a place to be.</p>
+    <button class="btn purple" onclick="showPage('brain')">
+      Explore SOFTSPACE
+    </button>
+  </div>
+  <div class="hero-art">🌿</div>
+</div>
+
+<div class="section-title">
+  <h2>Explore your space</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+  <div class="card-icon">📖</div>
+  <h3>Brain Space</h3>
+  <p>Let your thoughts out. Everything belongs here.</p>
+  <button class="btn purple" onclick="showPage('brain')">Open</button>
+</div>
+
+<div class="card">
+  <div class="card-icon">☁️</div>
+  <h3>Quiet Corner</h3>
+  <p>Find a quieter moment with ambient sounds.</p>
+  <button class="btn" onclick="showPage('quiet')">Open</button>
+</div>
+
+<div class="card">
+  <div class="card-icon">♡</div>
+  <h3>Mood Space</h3>
+  <p>Check in with yourself, if you want to.</p>
+  <button class="btn purple" onclick="showPage('mood')">Open</button>
+</div>
+
+<div class="card">
+  <div class="card-icon">🌱</div>
+  <h3>Reset</h3>
+  <p>Take a little pause. Nothing else required.</p>
+  <button class="btn" onclick="showPage('reset')">Open</button>
+</div>
+
+<div class="card">
+  <div class="card-icon">✨</div>
+  <h3>Little Things</h3>
+  <p>Discover something small and enjoyable.</p>
+  <button class="btn purple" onclick="showPage('little')">Open</button>
+</div>
+
+<div class="card">
+  <div class="card-icon">🌼</div>
+  <h3>Just Exist</h3>
+  <p>You don't have to accomplish anything here.</p>
+  <button class="btn" onclick="showPage('reset')">Open</button>
+</div>
+
+</div>
+</div>
+
+<aside class="sidebar">
+  <div class="small-box">
+    <h3>A gentle reminder</h3>
+    <p>You don't need to have everything figured out today.</p>
+  </div>
+
+  <h3>YOUR SPACE</h3>
+  <p>Take your time.</p>
+  <p>Leave whenever you want.</p>
+  <p>Come back whenever you want.</p>
+</aside>
+
+</div>
+</section>
+
+<!-- BRAIN SPACE -->
+
+<section id="brain" class="page">
+
+<div class="eyebrow">YOUR PRIVATE SPACE</div>
+<h1>Brain Space.</h1>
+<p>Everything on your mind can go here. No categories required.</p>
+
+<div class="input-area">
+  <h2>Let it all out.</h2>
+  <textarea id="noteInput" placeholder="Write whatever comes to mind..."></textarea>
+  <br><br>
+  <button class="btn" onclick="saveNote()">Save note</button>
+  <span id="saveMessage"></span>
+</div>
+
+<h2 style="margin-top:30px">Your thoughts</h2>
+<div class="notes" id="notesList"></div>
+
+</section>
+
+<!-- QUIET CORNER -->
+
+<section id="quiet" class="page">
+
+<div class="eyebrow">A QUIETER MOMENT</div>
+<h1>Quiet Corner.</h1>
+<p>A little background atmosphere. Choose what feels comfortable.</p>
+
+<div class="sound-card">
+  <div>
+    <h3>🌧️ Soft Rain</h3>
+    <p>Gentle rainfall.</p>
+  </div>
+  <button onclick="toggleSound('rain',this)">▶</button>
+</div>
+
+<div class="sound-card">
+  <div>
+    <h3>🌬️ Gentle Wind</h3>
+    <p>A soft breeze.</p>
+  </div>
+  <button onclick="toggleSound('wind',this)">▶</button>
+</div>
+
+<div class="sound-card">
+  <div>
+    <h3>🌊 Soft Noise</h3>
+    <p>A gentle ambient sound.</p>
+  </div>
+  <button onclick="toggleSound('noise',this)">▶</button>
+</div>
+
+<p style="font-size:12px;margin-top:20px">
+  Sounds are optional. Nothing plays automatically.
+</p>
+
+</section>
+
+<!-- MOOD SPACE -->
+
+<section id="mood" class="page">
+
+<div class="eyebrow">A MOMENT FOR YOURSELF</div>
+<h1>Mood Space.</h1>
+<p>How are you feeling right now? There is no right answer.</p>
+
+<div class="moods">
+  <button class="mood" onclick="selectMood(this,'Happy')">☀️<span>Happy</span></button>
+  <button class="mood" onclick="selectMood(this,'Calm')">🌿<span>Calm</span></button>
+  <button class="mood" onclick="selectMood(this,'Tired')">🌙<span>Tired</span></button>
+  <button class="mood" onclick="selectMood(this,'Overwhelmed')">☁️<span>Overwhelmed</span></button>
+  <button class="mood" onclick="selectMood(this,'Unsure')">🌫️<span>Unsure</span></button>
+  <button class="mood" onclick="selectMood(this,'Something else')">🌼<span>Something else</span></button>
+</div>
+
+<div class="small-box" id="moodResult">
+  <h3>Your feelings are welcome here.</h3>
+  <p>You don't have to explain them.</p>
+</div>
+
+<button class="btn light" onclick="clearMood()">Clear selection</button>
+
+</section>
+
+<!-- RESET -->
+
+<section id="reset" class="page">
+
+<div class="eyebrow">TAKE A LITTLE PAUSE</div>
+<h1>Reset.</h1>
+<p>A gentle breathing exercise. You can stop whenever you want.</p>
+
+<div class="breath-area">
+  <h2 id="breathTitle">Take a moment.</h2>
+  <p id="breathText">When you're ready, you can begin.</p>
+
+  <div class="breath-circle" id="breathCircle">
+    Ready
+  </div>
+
+  <button class="btn" id="breathButton" onclick="startBreathing()">
+    Begin
+  </button>
+
+  <p style="font-size:11px;margin-top:20px">
+    Breathing exercises are optional. Breathe naturally if this doesn't feel comfortable.
+  </p>
+</div>
+
+</section>
+
+<!-- LITTLE THINGS -->
+
+<section id="little" class="page">
+
+<div class="eyebrow">SOMETHING SMALL</div>
+<h1>Little Things.</h1>
+<p>No goals. No pressure. Just a little inspiration.</p>
+
+<div class="activity-box">
+  <div style="font-size:40px">🌼</div>
+  <h2>A little idea for now</h2>
+
+  <div class="activity" id="activity">
+    Notice something beautiful around you.
+  </div>
+
+  <button class="btn purple" onclick="newActivity()">
+    Give me another idea
+  </button>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+  <span>© 2026 SOFTSPACE</span>
+  <span>A little space for your mind. ♡</span>
+</footer>
+
+</div>
+
+<script>
+
+// NAVIGATION
+
+function showPage(id, button) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('nav button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  if(button) button.classList.add('active');
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// BRAIN SPACE
+
+let notes = JSON.parse(localStorage.getItem('softspace_notes') || '[]');
+
+function renderNotes() {
+  const list = document.getElementById('notesList');
+  list.innerHTML = '';
+
+  notes.forEach((note,index) => {
+    const div = document.createElement('div');
+    div.className = 'note';
+
+    const content = document.createElement('p');
+    content.textContent = note;
+
+    const del = document.createElement('button');
+    del.textContent = 'Delete note';
+    del.onclick = () => deleteNote(index);
+
+    div.append(content,del);
+    list.appendChild(div);
+  });
+
+  if(notes.length === 0) {
+    list.innerHTML = '<p>Your space is empty. That is okay too. ♡</p>';
+  }
+}
+
+function saveNote() {
+  const input = document.getElementById('noteInput');
+
+  if(!input.value.trim()) return;
+
+  notes.unshift(input.value.trim());
+
+  localStorage.setItem('softspace_notes',JSON.stringify(notes));
+
+  input.value = '';
+
+  document.getElementById('saveMessage').textContent = ' Saved ♡';
+
+  renderNotes();
+}
+
+function deleteNote(index) {
+  notes.splice(index,1);
+  localStorage.setItem('softspace_notes',JSON.stringify(notes));
+  renderNotes();
+}
+
+renderNotes();
+
+// MOOD SPACE
+
+function selectMood(button,mood) {
+  document.querySelectorAll('.mood').forEach(item => {
+    item.classList.remove('selected');
+  });
+
+  button.classList.add('selected');
+
+  document.getElementById('moodResult').innerHTML =
+    '<h3>You selected: ' + mood + '</h3><p>Thank you for checking in with yourself. ♡</p>';
+}
+
+function clearMood() {
+  document.querySelectorAll('.mood').forEach(item => {
+    item.classList.remove('selected');
+  });
+
+  document.getElementById('moodResult').innerHTML =
+    '<h3>Your feelings are welcome here.</h3><p>You don\'t have to explain them.</p>';
+}
+
+// BREATHING
+
+let breathing = false;
+let breathTimeout;
+
+function startBreathing() {
+  const button = document.getElementById('breathButton');
+  const circle = document.getElementById('breathCircle');
+
+  if(breathing) {
+    breathing = false;
+    clearTimeout(breathTimeout);
+    circle.classList.remove('grow','shrink');
+    circle.textContent = 'Ready';
+
+    document.getElementById('breathTitle').textContent = 'Take a moment.';
+    document.getElementById('breathText').textContent = 'You can return whenever you like.';
+    button.textContent = 'Begin';
+    return;
+  }
+
+  breathing = true;
+  button.textContent = 'Stop';
+
+  let phase = 0;
+
+  function cycle() {
+    if(!breathing) return;
+
+    if(phase === 0) {
+      document.getElementById('breathTitle').textContent = 'Breathe in';
+      circle.textContent = 'Breathe in';
+      circle.classList.add('grow');
+      circle.classList.remove('shrink');
+      phase = 1;
+
+    } else if(phase === 1) {
+      document.getElementById('breathTitle').textContent = 'Breathe out';
+      circle.textContent = 'Breathe out';
+      circle.classList.remove('grow');
+      circle.classList.add('shrink');
+      phase = 0;
+    }
+
+    breathTimeout = setTimeout(cycle,4000);
+  }
+
+  cycle();
+}
+
+// LITTLE THINGS
+
+const activities = [
+  'Notice something beautiful around you.',
+  'Listen to a song you enjoy.',
+  'Look out of a window for a moment.',
+  'Draw a tiny flower.',
+  'Make yourself a cozy drink.',
+  'Explore a place you have never visited.',
+  'Write down one random thought.',
+  'Look at the clouds.',
+  'Find something with your favourite colour.',
+  'Take a little break from your screen.',
+  'Think about somewhere you would love to visit.',
+  'Enjoy a quiet moment.'
+];
+
+function newActivity() {
+  const current = document.getElementById('activity').textContent;
+
+  let next;
+
+  do {
+    next = activities[Math.floor(Math.random()*activities.length)];
+  } while(next === current);
+
+  document.getElementById('activity').textContent = next;
+}
+
+// QUIET CORNER SOUND ENGINE
+
+let audioContext;
+let activeSound = null;
+let soundNodes = [];
+
+function stopSound() {
+  soundNodes.forEach(node => {
+    try {
+      if(node.stop) node.stop();
+      if(node.disconnect) node.disconnect();
+    } catch(e) {}
+  });
+
+  soundNodes = [];
+  activeSound = null;
+}
+
+function toggleSound(type,button) {
+  if(activeSound === type) {
+    stopSound();
+    button.textContent = '▶';
+    return;
+  }
+
+  stopSound();
+
+  document.querySelectorAll('.sound-card button').forEach(btn => {
+    btn.textContent = '▶';
+  });
+
+  if(!audioContext) {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  audioContext.resume();
+
+  const master = audioContext.createGain();
+  master.gain.value = 0.035;
+  master.connect(audioContext.destination);
+
+  if(type === 'noise' || type === 'rain') {
+    const buffer = audioContext.createBuffer(
+      1,
+      audioContext.sampleRate * 2,
+      audioContext.sampleRate
+    );
+
+    const data = buffer.getChannelData(0);
+
+    for(let i=0;i<data.length;i++) {
+      data[i] = Math.random()*2-1;
+    }
+
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer;
+    source.loop = true;
+
+    const filter = audioContext.createBiquadFilter();
+    filter.type = type === 'rain' ? 'lowpass' : 'highpass';
+    filter.frequency.value = type === 'rain' ? 1000 : 450;
+
+    source.connect(filter);
+    filter.connect(master);
+    source.start();
+
+    soundNodes.push(source,filter,master);
+
+  } else if(type === 'wind') {
+    const oscillator = audioContext.createOscillator();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 90;
+
+    const lfo = audioContext.createOscillator();
+    const modulation = audioContext.createGain();
+
+    lfo.frequency.value = 0.15;
+    modulation.gain.value = 30;
+
+    lfo.connect(modulation);
+    modulation.connect(oscillator.frequency);
+
+    oscillator.connect(master);
+
+    oscillator.start();
+    lfo.start();
+
+    soundNodes.push(oscillator,lfo,modulation,master);
+  }
+
+  activeSound = type;
+  button.textContent = 'Ⅱ';
+}
+
+window.addEventListener('beforeunload',stopSound);
+
+</script>
+
+</body>
+</html>
